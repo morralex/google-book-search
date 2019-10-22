@@ -1,18 +1,22 @@
-import React, { Component } from "react";
-import Banner, { Component } from "../components/Banner/Banner";
-import Nav, { Components } from "../components/Nav/Nav";
-import Search, { Components } from "../components/Search/Search";
-import Results, { Components } from "../components/Results/Results";
-import { Col, Row, Container } from "../components/Grid";
+import React from "react";
+import Banner from "../components/Banner/Banner";
+import Nav from "../components/Nav/Nav";
+import Try from "../components/InS/Try";
 
-class Books extends Component {
-  state = {
-    books: [],
-    title: "",
-    author: "",
-    synopsis: ""
-  };
 
-  componentDidMount() {
-    this.loadBooks();
+function Search () {
+
+    return (
+      <div>
+       <Nav />
+        <div className="container">
+          <Banner />
+          <Try />
+        </div>
+      </div>
+    );
+    
   }
+
+
+export default Search;

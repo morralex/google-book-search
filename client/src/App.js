@@ -1,23 +1,20 @@
-import React, { Component } from "react";
-import Nav from "./components/Nav/Nav";
-import Banner from "./components/Banner/Banner";
-import Search from "./components/Search/Search";
-import Results from "./components/Results/Results";
-import "./App.css";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Saved from "./pages/Saved";
+import Search from "./pages/Search";
 
-class App extends Component {
-  render() {
-    return (
-      
-        <div>
-          <Nav />
-          <Banner />
-          <Search />
-          <Results />
-        </div>
-      
-    );
-  }
+function App() {
+  return (
+    <Router>
+      <div>
+        <Switch>
+          <Route exact path="/" component={Search} />
+          <Route exact path="/search" component={Search} />
+          <Route exact path="/saved" component={Saved} />
+        </Switch>
+      </div>
+    </Router>
+  );
 }
 
 export default App;
