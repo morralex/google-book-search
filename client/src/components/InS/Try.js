@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+
 class Try extends Component {
     state = { 
-        seach: "",
-        results: []
+        usersearch: "",
+        results: [],
+        value: ""
      }
 
     componentDidMount() {
@@ -12,15 +14,27 @@ class Try extends Component {
     }
 
     searchGB = query => {
+        console.log("running searchGB");
         axios.get("https://www.googleapis.com/books/v1/volumes?q=" + query)
         .then(res => this.setState({ results: res.data.items[0].volumeInfo },
             console.log(res.data.items[0].volumeInfo)
             ))
     }
 
+    handleInputChange = event => {
+        const name = event.target.name;
+        const value = event.target.value;
+        
+        this.setState({
+            [name]: value
+        });
+    }
+
     handleSubmit = event => {
+        console.log("running handleSubmit");
         event.preventDefault();
         this.setState({ value: this.element.value })
+        console.log("val"+ this.state.value);
         this.searchGB(this.state.value)
         
         console.log(this.state.value)
@@ -44,7 +58,7 @@ class Try extends Component {
                                                 type="text"
                                                 ref={el => this.element = el}
                                                 name="usersearch"
-                                                value={this.state.name}
+                                                value={this.state.search}
                                                 onChange={this.state.handleInputChange}
                                             />
                                             <label>Book</label>
@@ -63,7 +77,16 @@ class Try extends Component {
                         <div className="card-panel">
                             <div className="list-overflow-container display">
                                 <ul className="list-group">{this.state.value}</ul>
-                                <div>{this.state.res}</div>
+                            </div>
+                            <div className="row">
+                                {/* <div className="col s4">
+                                    <img src={this.state.results.imageLinks} alt="no-img-avl"  />
+                                </div> */}
+                                <div className="col s6">
+                                <h5>Title: </h5><h6>{this.state.results.title}</h6>
+                                <h5>Author: </h5><h6>{this.state.results.authors}</h6>
+                                <h5>Description: </h5><h6>{this.state.results.description}</h6>
+                                </div>
                             </div>
                         </div>
                     </div>
