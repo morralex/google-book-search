@@ -15,7 +15,7 @@ class InS extends Component {
     }
 
     componentDidMount() {
-        this.searchGB(("Anthem").trim())
+        this.searchGB(("Harry").trim())
 
     }
 
@@ -42,6 +42,13 @@ class InS extends Component {
     //         .catch(err => console.log(err));
     // };
 
+    handleInputChange = event => {
+        const name = event.target.name;
+        const value = event.target.value;
+        this.setState({
+            [name]: value
+        });
+    }
 
     handleSubmit = event => {
         event.preventDefault();
@@ -49,9 +56,8 @@ class InS extends Component {
         this.searchGB(this.state.value)
         
         console.log(this.state.value)
-    }
 
-    
+    }
 
     render() {
         return (
