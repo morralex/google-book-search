@@ -4,7 +4,7 @@ import axios from "axios";
 
 class Try extends Component {
     state = {
-        usersearch: "",
+        // usersearch: "",
         results: [],
         value: ""
     }
@@ -35,27 +35,11 @@ class Try extends Component {
         });
     }
 
-    // handleInputChange(event) {
-    //     const target = event.target;
-    //     const value = target.type === 'checkbox' ? target.checked : target.value;
-    //     const name = target.name;
-
-    //     this.setState({
-    //         [name]: value
-    //     });
-    // }
 
     handleSubmit = event => {
         console.log("running handleSubmit");
         event.preventDefault();
         this.searchGB(this.element.value)
-        // console.log('+++++++++++++++++++')
-        // console.log(this.element.value)
-        // this.setState({ value: this.element.value })
-        // console.log("val"+ this.state.value);
-
-
-        // console.log(this.state.value)
     }
 
     render() {
@@ -75,7 +59,7 @@ class Try extends Component {
                                             <input
                                                 type="text"
                                                 ref={el => this.element = el}
-                                                name="usersearch"
+                                                name="value"
                                                 value={this.state.search}
                                                 onChange={this.handleInputChange}
                                             />
